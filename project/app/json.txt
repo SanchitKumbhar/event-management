@@ -1,0 +1,3 @@
+{'question': 'sadsad', 'type': 'text', 'options': [], 'answers': ['asdasd']}, {'question': 'asdasd', 'type': 'dropdownWidget', 'options': ['sadasdasd', 'sadasdsd'], 'answers': []}
+
+schema:  question

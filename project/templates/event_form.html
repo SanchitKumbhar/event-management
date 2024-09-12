@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Form</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f7f7f7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .form-container {
+            background-color: #ffffff;
+            padding: 20px 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .form-container h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #333333;
+        }
+
+        .form-field {
+            margin-bottom: 15px;
+        }
+
+        .form-field label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555555;
+        }
+
+        .form-field input {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #cccccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-field input:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+        .form-field input[type="submit"] {
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .form-field input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="form-container">
+        <h1 id="form-title"></h1>
+        <form id="dynamic-form"></form>
+    </div>
+
+    <script>
+        async function createForm() {
+            try {
+                const response = await fetch('/api/form-structure/');
+                const data = await response.json();
+
+                document.getElementById('form-title').innerText = data.form_title;
+
+                const form = document.getElementById('dynamic-form');
+
+                data.fields.forEach(field => {
+                    const formField = document.createElement('div');
+                    formField.classList.add('form-field');
+
+                    const label = document.createElement('label');
+                    label.innerText = field.label;
+                    label.setAttribute('for', field.name);
+                    formField.appendChild(label);
+
+                    const input = document.createElement('input');
+                    input.setAttribute('type', field.type);
+                    input.setAttribute('name', field.name);
+                    input.setAttribute('id', field.name);
+                    formField.appendChild(input);
+
+                    form.appendChild(formField);
+                });
+
+                const submitButton = document.createElement('input');
+                submitButton.type = 'submit';
+                submitButton.value = 'Submit';
+                form.appendChild(submitButton);
+            } catch (error) {
+                console.error('Error fetching the form structure:', error);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', createForm);
+    </script>
+</body>
+
+</html>

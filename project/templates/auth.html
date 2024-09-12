@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SigUp and SignIn Page</title>
+    <link rel="stylesheet" href="style_mod.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body,
+        input,
+        select {
+            font-family: "Poppins", sans-serif;
+        }
+
+        .container {
+            position: relative;
+            width: 100%;
+            background-color: #fff;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        .forms-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        .signin-signup {
+            position: absolute;
+            top: 25%;
+            left: 25%;
+            width: 50%;
+            display: grid;
+            transition: 1s 0.7s ease-in-out;
+            grid-template-columns: 1fr;
+            z-index: 5;
+        }
+
+        form {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 0rem 5rem;
+            overflow: hidden;
+            grid-column: 1 / 2;
+            grid-row: 1 / 2;
+        }
+
+        form.sign-in-form {
+            margin-left: 13%;
+            opacity: 1;
+            z-index: 2;
+            display: block;
+            transform: translateX(0);
+
+        }
+
+        form.sign-up-form {
+            margin-left: 13%;
+            opacity: 0;
+            z-index: 1;
+            display: block;
+        }
+
+        .title {
+            margin-left: 25%;
+            font-size: 2.2rem;
+            color: #444;
+            margin-bottom: 10px;
+        }
+
+        .input-field {
+            max-width: 380px;
+            width: 100%;
+            background-color: #f0f0f0;
+            margin: 10px 0;
+            height: 55px;
+            border-radius: 55px;
+            display: grid;
+            grid-template-columns: 15% 85%;
+            padding: 0 0.4rem;
+            position: relative;
+        }
+
+        .input-field i {
+            text-align: center;
+            line-height: 55px;
+            transition: 0.5s;
+            color: #acacac;
+            font-size: 1.1rem;
+        }
+
+        .input-field input,
+        select {
+            background: none;
+            outline: none;
+            border: none;
+            line-height: 1;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: #333;
+        }
+
+        .input-field input::placeholder {
+            color: #aaa;
+            font-weight: 500;
+        }
+
+        #position {
+            color: #aaa;
+            font-weight: 500;
+        }
+
+        .btn {
+
+            width: 150px;
+            background-color: #5995fd;
+            border: none;
+            outline: none;
+            height: 49px;
+            border-radius: 49px;
+            color: #fff;
+            text-transform: uppercase;
+            font-weight: 600;
+            transition: 0.5s;
+            margin-left: 22%;
+            cursor: pointer;
+            appearance: none;
+
+        }
+
+        .btn:hover {
+            background-color: #4d84e2;
+        }
+
+        p {
+            margin-left: 12%;
+            appearance: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="forms-container">
+            <div class="signin-signup">
+                <form action="#" id="sign-in-form" class="sign-in-form">
+                    <h2 class="title">Sign in</h2>
+                    <div class="input-field">
+                        <i class="user"></i>
+                        <input type="text" placeholder="Username" />
+                    </div>
+                    <div class="input-field">
+                        <i class="lock"></i>
+                        <input type="password" placeholder="Password" />
+                    </div>
+                    <div class="input-field">
+                        <i class="drop-down"></i>
+                        <select name="position" id="position">
+                            <option value="position" disabled selected>Position</option>
+                            <option value="participant">Participant</option>
+                            <option value="event-coordinator">Event Coordinator</option>
+                        </select>
+                    </div>
+                    <input type="submit" value="Login" class="btn solid" /><br><br>
+                    <p>Don't have an account? <a href="#" id="signUpLink">SignUp</a></p>
+                </form>
+
+                <form action="" id="sign-up-form" class="sign-up-form" method="post">
+                    {% csrf_token %}
+                    <h2 class="title">Sign up</h2>
+                    <div class="input-field">
+                        <i class="user"></i>
+                        <input type="email" placeholder="Email" name="email" />
+                    </div>
+                    <div class="input-field">
+                        <i class="drop-down"></i>
+                        <select name="position" id="position">
+                            <option value="position" disabled selected>Position</option>
+                            <option value="participant">Participant</option>
+                            <option value="event-coordinator">Event Coordinator</option>
+                        </select>
+                    </div>
+                    <div class="input-field">
+                        <i class="lock"></i>
+                        <input type="password" placeholder="Password" />
+                    </div>
+                    <input type="submit" class="btn" value="Sign up" /><br><br>
+                    <p>Already have an account? <a href="#" id="signInLink">SignIn</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('signUpLink').addEventListener('click', function (event) {
+            event.preventDefault();
+
+            var signInForm = document.getElementById('sign-in-form');
+            var signUpForm = document.getElementById('sign-up-form');
+
+            signInForm.style.opacity = '0';
+            signInForm.style.zIndex = '1';
+            signInForm.style.display = 'none';
+
+            signUpForm.style.opacity = '1';
+            signUpForm.style.zIndex = '2';
+            signUpForm.style.display = 'block';
+        });
+
+        document.getElementById('signInLink').addEventListener('click', function (event) {
+            event.preventDefault();
+
+            var signInForm = document.getElementById('sign-in-form');
+            var signUpForm = document.getElementById('sign-up-form');
+
+            signUpForm.style.opacity = '0';
+            signUpForm.style.zIndex = '1';
+            signUpForm.style.display = 'none';
+
+            signInForm.style.opacity = '1';
+            signInForm.style.zIndex = '2';
+            signInForm.style.display = 'block';
+        });
+    </script>
+</body>
+
+</html>
