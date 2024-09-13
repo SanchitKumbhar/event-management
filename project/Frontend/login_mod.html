@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup and Signin Page</title>
+    <link rel="stylesheet" href="style_mod.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+<div class="container">
+    <div class="forms-container">
+        <div class="signin-signup">
+            <form action="#" id="sign-in-form" class="sign-in-form">
+                <h2 class="title">Sign in</h2>
+                <div class="input-field">
+                    <i class="user"></i>
+                    <input type="text" placeholder="Username" />
+                </div>
+                <div class="input-field">
+                    <i class="lock"></i>
+                    <input type="password" placeholder="Password" />
+                </div>
+                <div class="input-field">
+                    <i class="drop-down"></i>
+                    <select name="position" id="position">
+                        <option value="position" disabled selected>Position</option>
+                        <option value="participant">Participant</option>
+                        <option value="event-coordinator">Event Coordinator</option>
+                    </select>
+                </div>
+                <input type="submit" value="Login" class="btn solid" /><br><br>
+                <p>Don't have an account? <a href="#" id="signUpLink">SignUp</a></p>
+            </form>
+
+            <form action="#" id="sign-up-form" class="sign-up-form">
+                <h2 class="title">Sign up</h2>
+                <div class="input-field">
+                    <i class="user"></i>
+                    <input type="text" placeholder="Username" />
+                </div>
+                <div class="input-field">
+                    <i class="envelope"></i>
+                    <input type="email" placeholder="Email" />
+                </div>
+                <div class="input-field">
+                    <i class="lock"></i>
+                    <input type="password" placeholder="Password" />
+                </div>
+                <input type="submit" class="btn" value="Sign up" /><br><br>
+                <p>Already have an account? <a href="#" id="signInLink">SignIn</a></p>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById('signUpLink').addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent default link behavior
+
+        // Get the forms
+        var signInForm = document.getElementById('sign-in-form');
+        var signUpForm = document.getElementById('sign-up-form');
+
+        // Hide the sign-in form
+        signInForm.style.opacity = '0';
+        signInForm.style.zIndex = '1';
+        signInForm.style.display = 'none';
+
+        // Show the sign-up form
+        signUpForm.style.opacity = '1';
+        signUpForm.style.zIndex = '2';
+        signUpForm.style.display = 'block';
+    });
+
+    document.getElementById('signInLink').addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent default link behavior
+
+        // Get the forms
+        var signInForm = document.getElementById('sign-in-form');
+        var signUpForm = document.getElementById('sign-up-form');
+
+        // Hide the sign-up form
+        signUpForm.style.opacity = '0';
+        signUpForm.style.zIndex = '1';
+        signUpForm.style.display = 'none';
+
+        // Show the sign-in form
+        signInForm.style.opacity = '1';
+        signInForm.style.zIndex = '2';
+        signInForm.style.display = 'block';
+    });
+</script>  
+</body>
+</html>

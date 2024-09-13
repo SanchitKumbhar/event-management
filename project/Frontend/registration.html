@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Registration Form</title>
+    <link rel="stylesheet" href="style_form.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <form action="#">
+        <div class="container">
+            <h2>Event Registration</h2>
+            <hr>
+            <div class="form_content">
+            <div class="OrganizerName">
+                <label for="eventOrganizer">Event Organizer:</label>
+                <input type="text" name="eventOrganizer" id="eventOrganizer" required> 
+            </div><br>
+            <div class="EventDay">
+            <label for="eventDay">Event Day:</label>
+            <select name="eventDay" id="eventDay">
+                <option value="" disabled selected>Select Day</option>
+                <option value="Monday">Monday</option>
+                <option value="Tuesday">Tuesday</option>
+                <option value="Wednesday">Wednesday</option>
+                <option value="Thursday">Thursday</option>
+                <option value="Friday">Friday</option>
+                <option value="Saturday">Saturday</option>
+                <option value="Sunday">Sunday</option>
+            </select>
+            </div><br>
+                <div class="EventDate">
+                   <label for="eventDate">Event Date:</label>
+                   <input type="date" name="eventDate" id="eventDate" required>
+            </div><br>
+            <div class="EventTime">
+                   <label for="eventTime">Event Time:</label>
+                   <input type="time" name="eventTime" id="eventTime" required> 
+            </div><br>
+            <div class="EventAbout">
+                   <label for="eventAbout">About:</label>
+                   <input type="text" name="eventAbout" id="eventAbout">
+            </div><br>
+
+            <input type="file" id="file-input">
+            <button type="button" class="custom-button" onclick="document.getElementById('file-input').click();">
+                  Upload File
+            </button>
+            <span id="file-name" class="file-name">No file chosen</span>
+ 
+            <input type="button" type="submit" value="SUBMIT" class="btn">
+        </div>
+        </div>
+        </div>
+    </form>
+    <script>
+        //JavaScript to update the file name display
+        document.getElementById('file-input').addEventListener('change', function() {
+            const fileName = this.files.length > 0 ? this.files[0].name : 'No file chosen';
+            document.getElementById('file-name').textContent = fileName;
+        });
+    </script>
+</body>
+</html>
