@@ -1,1 +1,1 @@
-//This folder is all about frontend
+This folder is all about frontend
