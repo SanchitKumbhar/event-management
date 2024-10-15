@@ -72,25 +72,25 @@ def submit_form(request, file, pk):
 
 
 def create_form(request, file, pk):
-    return render(request, "Manager_form.html", {'file': file, 'pk': pk})
+    return render(request, "manager_form.html", {'file': file, 'pk': pk})
     # return JsonResponse({"status": "error", "message": "Invalid request method"}, status=405)
 
 
 def event_info(request):
     if request.method == "POST":
-        eventname = request.POST.get("eventname")
-        eventorganizer = request.POST.get("eventorganizer")
-        eventday = request.POST.get("eventday")
-        eventdate = request.POST.get("eventdate")
-        eventtime = request.POST.get("eventtime")
-        eventabout = request.POST.get("eventabout")
+        # eventname = request.POST.get("eventname")
+        eventorganizer = request.POST.get("eventOrganizer")
+        eventday = request.POST.get("eventDay")
+        eventdate = request.POST.get("eventDate")
+        eventtime = request.POST.get("eventTime")
+        eventabout = request.POST.get("eventAbout")
         file = request.FILES['file']
-
+    
         fileobj = FileSystemStorage()
         filepathname = fileobj.save(file.name, file)
         filepathname = fileobj.url(filepathname)
 
-        eventobj = EventInformation(eventname=eventname, eventorganizer=eventorganizer, eventday=eventday, eventdate=eventdate,
+        eventobj = EventInformation(eventname="eventname", eventorganizer=eventorganizer, eventday=eventday, eventdate=eventdate,
                                     eventtime=eventtime, eventabout=eventabout, user=request.user, eventfile=file, fileurl=file.name)
         eventobj.save()
 
@@ -98,6 +98,14 @@ def event_info(request):
 
     return render(request, "event_registration.html")
 
-def event_form(request,url):
-    return JsonResponse(url)
+
+
+def form_render(request,pk):
+    if request.method=='GET':
+        get_instance=FormData.objects.get(event=pk)
+        print(get_instance)
+        return JsonResponse(get_instance[0])
+    else:
+        return render(request,"client-form.html",{'id':pk})
+
     

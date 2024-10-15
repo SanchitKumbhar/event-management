@@ -5,96 +5,168 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dynamic Form</title>
+    <link rel="stylesheet" href="form.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            padding: 20px;
-        }
+        
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f4f4;
+    padding: 20px;
+}
 
-        .form-container {
-            background: white;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-            max-width: 600px;
-            margin: auto;
-        }
+.form-container {
+    background: linear-gradient(45deg, #ad48f0, #fd2d73, #f16e2c, #fbc040,#f138a1);
+    padding: 30px;
+    font-family: 'Poppins', sans-serif;
+    border-radius: 5px;
+    box-shadow: 2px 2px 3px 2px #b8b8b8;
+    max-width: 650px;
+    margin: auto;
+}
 
-        h1 {
-            text-align: center;
-        }
+h1 {
+    text-align: center;
+    color: black;
+    font-family: 'Poppins', sans-serif;
+    font-size: 35px;
+    text-shadow: 2px 2px 3px black;
+}
 
-        .form-item {
-            margin-bottom: 20px;
-        }
+hr{
+    height: 3.5px;
+    border: rgb(24, 24, 24);
+    background-color: rgb(21, 21, 21);
+}
 
-        .question-label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
+.form-item {
+    margin-bottom: 20px;
+}
 
-        input[type="text"],
-        textarea,
-        select {
-            width: 100%;
-            padding: 10px;
-            margin-top: 5px;
-            margin-bottom: 10px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-        }
+.question-label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
 
-        .option-input {
-            margin-top: 10px;
-        }
+input[type="text"],
+textarea,
+select {
+    width: 96%;
+    max-width: 96%;
+    min-height: 25px;
+    height: 25px;
+    font-size: 17px;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
 
-        button {
-            margin: 5px;
-            padding: 10px;
-            background-color: #007BFF;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
+input::placeholder,
+textarea::placeholder,
+select::placeholder{
+    color: grey;
+    font-family: 'Poppins', sans-serif;
+    
+} 
 
-        button:hover {
-            background-color: #0056b3;
-        }
+.option-input {
+    margin-top: 10px;
+}
 
-        #dynamic-form {
-            margin-top: 20px;
-        }
+.form-builder{
+    display: flex;
+    flex-direction: row;
+}
 
-        .dropdown-widget {
-            display: flex;
-            flex-direction: column;
-        }
+button {
+    margin: 5px;
+    padding: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+    background-color: whitesmoke;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
 
-        .dropdown-widget select {
-            width: calc(100% - 120px);
-            margin-right: 10px;
-        }
+.button-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px; 
+}
 
-        .dropdown-widget .option-input {
-            display: flex;
-            align-items: center;
-        }
+.half-button{
+    width: 48%; 
+    padding: 10px; 
+    
+}
+
+.mid-button{
+    width: 48%;
+    padding: 10px;
+    display: block;
+    margin: 0 auto;
+}
+
+.dropdown-widget button{
+    width: 115px;
+}
+
+#submit-form{
+    display: none;
+    margin: 0 auto;
+}
+
+button:hover {
+    background-color: #ce3ca2;
+    color: white;
+    transition: 0.4s;
+}
+
+#dynamic-form {
+    margin-top: 20px;
+}
+
+.dropdown-widget {
+    display: flex;
+    flex-direction: column;
+}
+
+.dropdown-widget select {
+    width: 100%;
+    min-width: 99%;
+    height: 46px;
+    margin-right: 10px;
+}
+
+.dropdown-widget .option-input {
+    display: flex;
+    align-items: center;
+}
+
+
     </style>
-</head>
+   </head>
 
 <body>
     <div class="form-container">
-        <h1>Create Your Form</h1>
+        <h1>CREATE YOUR FORM!!</h1><hr>
         <div id="form-builder">
-            <button onclick="addQuestion('text')">Add Text Question</button>
-            <button onclick="addQuestion('textarea')">Add Text Area Question</button>
-            <button onclick="addDropdownWidget()">Add Dropdown Widget Question</button>
-            <button onclick="addQuestion('radio')">Add Radio Button Question</button>
-            <button onclick="addQuestion('checkbox')">Add Check Box Question</button>
-        </div>
+            <div class="button-row">
+            <button onclick="addQuestion('text')" class="half-button">Add Text Question</button>
+            <button onclick="addQuestion('textarea')" class="half-button">Add Text Area Question</button>
+            </div>
+            <div class="button-row">
+            <button onclick="addDropdownWidget()" class="half-button">Add Dropdown Widget Question</button>
+            <button onclick="addQuestion('radio')" class="half-button">Add Radio Button Question</button>
+            </div>
+            <button onclick="addQuestion('checkbox')" class="mid-button">Add Check Box Question</button>
+        </div><hr>
         <form id="dynamic-form">
             <!-- Dynamic form fields will be added here -->
         </form>
@@ -102,44 +174,49 @@
     </div>
 
     <script>
-        function addQuestion(type) {
-            const form = document.getElementById("dynamic-form");
 
-            const questionDiv = document.createElement("div");
-            questionDiv.className = "form-item";
+    function addQuestion(type) {
+    const form = document.getElementById("dynamic-form");
 
-            const label = document.createElement("label");
-            label.className = "question-label";
-            label.textContent = "Question:";
-            questionDiv.appendChild(label);
+    const questionDiv = document.createElement("div");
+    questionDiv.className = "form-item";
 
-            const questionInput = document.createElement("input");
-            questionInput.type = "text";
-            questionInput.placeholder = "Enter your question";
-            questionDiv.appendChild(questionInput);
+    const label = document.createElement("label");
+    label.className = "question-label";
+    label.textContent = "Question:";
+    questionDiv.appendChild(label);
 
-            const answerLabel = document.createElement("label");
-            answerLabel.className = "question-label";
-            answerLabel.textContent = "Answer:";
-            questionDiv.appendChild(answerLabel);
+    const questionInput = document.createElement("input");
+    questionInput.type = "text";
+    questionInput.placeholder = "Enter your question";
+    questionDiv.appendChild(questionInput);
 
-            if (type === 'text') {
-                const input = document.createElement("input");
-                input.type = "text";
-                input.name = "textInput";
-                input.placeholder = "Enter answer";
-                questionDiv.appendChild(input);
-            } else if (type === 'textarea') {
-                const textarea = document.createElement("textarea");
-                textarea.name = "textArea";
-                textarea.placeholder = "Enter details";
-                questionDiv.appendChild(textarea);
-            } else if (type === 'radio' || type === 'checkbox') {
-                addOptionInput(questionDiv, type);
-            }
+    const answerLabel = document.createElement("label");
+    answerLabel.className = "question-label";
+    answerLabel.textContent = "Answer:";
+    questionDiv.appendChild(answerLabel);
 
-            form.appendChild(questionDiv);
-        }
+    if (type === 'text') {
+        const input = document.createElement("input");
+        input.type = "text";
+        input.name = "textInput";
+        input.placeholder = "Enter answer";
+        questionDiv.appendChild(input);
+    } else if (type === 'textarea') {
+        const textarea = document.createElement("textarea");
+        textarea.name = "textArea";
+        textarea.placeholder = "Enter details";
+        questionDiv.appendChild(textarea);
+    } else if (type === 'radio' || type === 'checkbox') {
+        addOptionInput(questionDiv, type);
+    }
+
+    form.appendChild(questionDiv);
+
+    document.getElementById("submit-form").style.display = "block";
+    
+}
+
 
         function addDropdownWidget() {
             const form = document.getElementById("dynamic-form");
@@ -192,6 +269,10 @@
             dropdownDiv.appendChild(addOptionButton);
             questionDiv.appendChild(dropdownDiv);
             form.appendChild(questionDiv);
+
+            // Shows the submit button
+            document.getElementById("submit-form").style.display = "block";
+
         }
 
         function addOptionInput(parentElement, type) {
@@ -310,3 +391,6 @@
 </body>
 
 </html>
+
+
+

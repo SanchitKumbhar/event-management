@@ -1,123 +1,87 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dynamic Form</title>
+    <title>Document</title>
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f7f7f7;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
+        #name{
+            display: none;
         }
-
-        .form-container {
-            background-color: #ffffff;
-            padding: 20px 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            max-width: 400px;
-            width: 100%;
+        
+        #textarea{
+            display: none;
         }
-
-        .form-container h1 {
-            font-size: 24px;
-            margin-bottom: 20px;
-            text-align: center;
-            color: #333333;
+        #radio{
+            display: none;
         }
-
-        .form-field {
-            margin-bottom: 15px;
+        
+        #checkbox{
+            display: none;
         }
-
-        .form-field label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-            color: #555555;
-        }
-
-        .form-field input {
-            width: 100%;
-            padding: 10px;
-            font-size: 16px;
-            border: 1px solid #cccccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-            transition: border-color 0.3s ease;
-        }
-
-        .form-field input:focus {
-            border-color: #007bff;
-            outline: none;
-        }
-
-        .form-field input[type="submit"] {
-            background-color: #007bff;
-            color: #ffffff;
-            border: none;
-            cursor: pointer;
-            font-weight: bold;
-            margin-top: 10px;
-        }
-
-        .form-field input[type="submit"]:hover {
-            background-color: #0056b3;
+        
+        #select{
+            display: none;
         }
     </style>
-</head>
+ </head>
+ <body>
+    
+    <!-- creating input widgets -->
 
-<body>
-    <div class="form-container">
-        <h1 id="form-title"></h1>
-        <form id="dynamic-form"></form>
-    </div>
+    <h2>Form with Various Input Widgets</h2>
+
+    <form action="#" method="post">
+
+        <!-- Text Input -->
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" placeholder="Enter your name">
+        </div>
+
+        <!-- Textarea -->
+        <div class="form-group">
+            <label for="message">Message:</label>
+            <textarea id="message" name="textarea" rows="4" placeholder="Enter your message"></textarea>
+        </div>
+
+        <!-- Select -->
+        <div class="form-group">
+            <label for="country">Country:</label>
+            <select id="country" name="select">
+                <option value="us">United States</option>
+            </select>
+        </div>
+
+        <!-- Radio Buttons -->
+        <div class="form-group">
+            <label>Gender:</label><br>
+            <input type="radio" id="male" name="radio" value="male">
+            <label for="male">Male</label><br>
+        </div>
+
+        <!-- Checkboxes -->
+        <div class="form-group">
+            <label>Hobbies:</label><br>
+            <input type="checkbox" id="hobby1" name="checkbox" value="reading">
+            <label for="hobby1">Reading</label><br>
+        </div>
+
+        <button type="submit">Submit</button>
+
+    </form>
 
     <script>
-        async function createForm() {
-            try {
-                const response = await fetch('/api/form-structure/');
-                const data = await response.json();
 
-                document.getElementById('form-title').innerText = data.form_title;
-
-                const form = document.getElementById('dynamic-form');
-
-                data.fields.forEach(field => {
-                    const formField = document.createElement('div');
-                    formField.classList.add('form-field');
-
-                    const label = document.createElement('label');
-                    label.innerText = field.label;
-                    label.setAttribute('for', field.name);
-                    formField.appendChild(label);
-
-                    const input = document.createElement('input');
-                    input.setAttribute('type', field.type);
-                    input.setAttribute('name', field.name);
-                    input.setAttribute('id', field.name);
-                    formField.appendChild(input);
-
-                    form.appendChild(formField);
-                });
-
-                const submitButton = document.createElement('input');
-                submitButton.type = 'submit';
-                submitButton.value = 'Submit';
-                form.appendChild(submitButton);
-            } catch (error) {
-                console.error('Error fetching the form structure:', error);
-            }
-        }
-
-        document.addEventListener('DOMContentLoaded', createForm);
     </script>
-</body>
+ </body>
+ </html>
 
-</html>
+ <!-- logic
+
+    step1: create input widgets and make the default display as none;
+    step2: create a js, fecth the api from backend the specified event;
+    step3: check the question,type,options;
+    step4: drop the answers into answer key;
+
+-->

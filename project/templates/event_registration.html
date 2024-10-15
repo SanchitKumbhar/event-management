@@ -139,7 +139,8 @@ input[type="file"] {
     </style>
 </head>
 <body>
-    <form action="#">
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
         <div class="container">
             <h2>Event Registration</h2>
             <hr>
@@ -174,16 +175,17 @@ input[type="file"] {
                    <input type="text" name="eventAbout" id="eventAbout">
             </div><br>
 
-            <input type="file" id="file-input">
+            <input type="file" id="file-input" name="file">
             <button type="button" class="custom-button" onclick="document.getElementById('file-input').click();">
                   Upload File
             </button>
             <span id="file-name" class="file-name">No file chosen</span>
  
-            <input type="button" type="submit" value="SUBMIT" class="btn">
+            <input  type="submit" value="SUBMIT" class="btn">
         </div>
         </div>
         </div>
+        
     </form>
     <script>
         //JavaScript to update the file name display

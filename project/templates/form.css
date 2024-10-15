@@ -1,0 +1,141 @@
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f4f4;
+    padding: 20px;
+}
+
+.form-container {
+    background: linear-gradient(45deg, #ad48f0, #fd2d73, #f16e2c, #fbc040,#f138a1);
+    padding: 30px;
+    font-family: 'Poppins', sans-serif;
+    border-radius: 5px;
+    box-shadow: 2px 2px 3px 2px #b8b8b8;
+    max-width: 650px;
+    margin: auto;
+}
+
+h1 {
+    text-align: center;
+    color: black;
+    font-family: 'Poppins', sans-serif;
+    font-size: 35px;
+    text-shadow: 2px 2px 3px black;
+}
+
+hr{
+    height: 3.5px;
+    border: rgb(24, 24, 24);
+    background-color: rgb(21, 21, 21);
+}
+
+.form-item {
+    margin-bottom: 20px;
+}
+
+.question-label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"],
+textarea,
+select {
+    width: 96%;
+    max-width: 96%;
+    min-height: 25px;
+    height: 25px;
+    font-size: 17px;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+input::placeholder,
+textarea::placeholder,
+select::placeholder{
+    color: grey;
+    font-family: 'Poppins', sans-serif;
+    
+} 
+
+.option-input {
+    margin-top: 10px;
+}
+
+.form-builder{
+    display: flex;
+    flex-direction: row;
+}
+
+button {
+    margin: 5px;
+    padding: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+    background-color: whitesmoke;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.button-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px; 
+}
+
+.half-button{
+    width: 48%; 
+    padding: 10px; 
+    
+}
+
+.mid-button{
+    width: 48%;
+    padding: 10px;
+    display: block;
+    margin: 0 auto;
+}
+
+.dropdown-widget button{
+    width: 115px;
+}
+
+#submit-form{
+    display: none;
+    margin: 0 auto;
+}
+
+button:hover {
+    background-color: #ce3ca2;
+    color: white;
+    transition: 0.4s;
+}
+
+#dynamic-form {
+    margin-top: 20px;
+}
+
+.dropdown-widget {
+    display: flex;
+    flex-direction: column;
+}
+
+.dropdown-widget select {
+    width: 100%;
+    min-width: 99%;
+    height: 46px;
+    margin-right: 10px;
+}
+
+.dropdown-widget .option-input {
+    display: flex;
+    align-items: center;
+}
+

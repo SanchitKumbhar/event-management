@@ -79,7 +79,7 @@
         {% for index1, index2 in zip_event_form %}
         <div class="cards">
             <div class="content">
-                <h3 >{{index1.eventname}}</h3>
+                <h3 ><a href="from/{{index1.pk}}">{{index1.eventname}}</a></h3>
                 {{index1.eventorganizer}} <br>
                 {{index1.eventday}} <br>
                 {{index1.eventdate}} <br>
