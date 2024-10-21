@@ -10,7 +10,7 @@ import pandas as pd
 # Create your views here.
 
 
-def auth(request):
+def signup(request):
     if request.method == "POST":
         email = request.POST.get("email")
         password = request.POST.get("password")
@@ -25,6 +25,17 @@ def auth(request):
 
     return render(request, "auth.html")
 
+def login(request):
+    if request.method == 'POST':
+        email = request.POST.get("email")
+        password = request.POST.get("password")
+        user = authenticate(request, username=email, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('/')
+        else:
+            print('Invalid username or password.')
+    return render(request, 'login.html')
 
 def home(request):
     if request.user.is_authenticated:
@@ -101,11 +112,13 @@ def event_info(request):
 
 
 def form_render(request,pk):
+            return render(request,"client-form.html",{'id':pk})
+
+from django.forms.models import model_to_dict
+
+def formapi(request,pk):
     if request.method=='GET':
         get_instance=FormData.objects.get(event=pk)
-        print(get_instance)
-        return JsonResponse(get_instance[0])
-    else:
-        return render(request,"client-form.html",{'id':pk})
+        # print(model_to_dict(get_instance))
+        return JsonResponse(model_to_dict(get_instance))
 
-    

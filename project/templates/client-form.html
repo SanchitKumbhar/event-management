@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
+{% load static %}
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,25 +13,97 @@
 </head>
 
 <body>
-    <div class="container">
-        <!-- <input type="text" class="text"> -->
+    <div id="container">
+
     </div>
 
-    <script>
-        let container = document.getElementsByClassName("container")
 
-        let api = fetch("form/{{id}}")
+    <script>
+        let container = document.getElementById("container")
+        let dict;
+
+        function func(params) {
+            FormCondition = (index) => {
+                questionTag = (index) => {
+                    const question = document.createElement('h4');
+                    question.className = 'question';
+                    question.textContent = params['data'][index]['question']
+                    container.appendChild(question)
+                }
+                if (params['data'][index]['type'] == 'text') {
+                    questionTag(index);
+                    // answer field
+                    const textTag = document.createElement('input');
+                    textTag.type = 'text';
+                    textTag.className = 'text-input';
+                    container.appendChild(textTag)
+
+                }
+                else if (params['data'][index]['type'] == 'textarea') {
+                    questionTag(index);
+                    // answer field
+                    const textareaTag = document.createElement('textarea');
+                    textareaTag.className = 'textaera-input';
+                    container.appendChild(textareaTag)
+                }
+                else if (params['data'][index]['type'] == 'dropdownWidget') {
+                    // 
+                    questionTag(index);
+                    const selectTag = document.createElement('select');
+                    selectTag.className = 'select-input';
+                    container.appendChild(selectTag)
+
+                    params['data'][1]['options'].forEach(element => {
+                        const optionTag = document.createElement('option');
+                        optionTag.className = 'option-tag';
+                        optionTag.textContent = element;
+                        selectTag.append(optionTag)
+                    });
+                }
+                else if (params['data'][index]['type'] == 'checkbox') {
+                    questionTag(index)
+                    const checkTag = document.createElement('checkbox');
+                    checkTag.id = 'check-btn';
+                    params['data'][index]['options'].forEach(element => {
+                        const optionTag = document.createElement('label');
+                        optionTag.textContent(element);
+                    })
+                }
+                else if (params['data'][index]['type'] == 'radio') {
+                    questionTag(index)
+                    const radioTag = document.createElement('radio');
+                    radioTag.id = 'radio-btn';
+                    params['data'][index]['options'].forEach(element => {
+                        const optionTag = document.createElement('label');
+                        optionTag.textContent(element);
+                    })
+                }
+                // console.log(); 
+
+
+
+            }
+            for (let index = 0; index < params['data'].length; index++) {
+                FormCondition(index);
+            }
+            console.log('here');
+
+        }
+
+        let api = fetch("/api/form/{{id}}")
             .then(response => {
                 return response.json()
             })
             .then(data => {
-                console.log('Success:', data);
+                func(data);
             })
             .catch((error) => {
                 console.error('Error:', error);
             });
+        console.log(dict);
 
     </script>
+    <script src="js/client-form.js"></script>
 </body>
 
 </html>
