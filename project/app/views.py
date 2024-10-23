@@ -42,7 +42,7 @@ def home(request):
         allevents=EventInformation.objects.all()
         allformdata=FormData.objects.all()
         print(allevents)
-        return render(request, "home.html",{'event':allevents,'zip_event_form':zip(allevents,allformdata)})
+        return render(request, "home.html",{'event':allevents})
         
     else:
         return redirect("/auth")

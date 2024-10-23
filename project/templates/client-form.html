@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 {% load static %}
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -46,36 +47,53 @@
                     textareaTag.className = 'textaera-input';
                     container.appendChild(textareaTag)
                 }
-                else if (params['data'][index]['type'] == 'dropdownWidget') {
+                else if (params['data'][index]['type'] == 'select') {
                     // 
                     questionTag(index);
                     const selectTag = document.createElement('select');
                     selectTag.className = 'select-input';
                     container.appendChild(selectTag)
-
-                    params['data'][1]['options'].forEach(element => {
+                    params['data'][index]['options'].forEach(element => {
                         const optionTag = document.createElement('option');
                         optionTag.className = 'option-tag';
                         optionTag.textContent = element;
-                        selectTag.append(optionTag)
+                        selectTag.appendChild(optionTag)
                     });
                 }
                 else if (params['data'][index]['type'] == 'checkbox') {
                     questionTag(index)
-                    const checkTag = document.createElement('checkbox');
-                    checkTag.id = 'check-btn';
+                
                     params['data'][index]['options'].forEach(element => {
+                        const checkTag = document.createElement('input');
+                        checkTag.type = 'checkbox';
+                        checkTag.id = 'checkbox-btn';  // Assign a unique ID for each radio button
+                        checkTag.name = 'checkbox-group';  // Group name for radio buttons
+
                         const optionTag = document.createElement('label');
-                        optionTag.textContent(element);
+                        optionTag.textContent = element;
+                        optionTag.setAttribute('for', 'checkbox-btn');  // Link the label to the radio button via the 'for' attribute
+
+                        // Append the radio button and the label to the container
+                        container.appendChild(checkTag);
+                        container.appendChild(optionTag);
                     })
                 }
                 else if (params['data'][index]['type'] == 'radio') {
                     questionTag(index)
-                    const radioTag = document.createElement('radio');
-                    radioTag.id = 'radio-btn';
+
                     params['data'][index]['options'].forEach(element => {
+                        const radioTag = document.createElement('input');
+                        radioTag.type = 'radio';
+                        radioTag.id = 'radio-btn';  // Assign a unique ID for each radio button
+                        radioTag.name = 'radio-group';  // Group name for radio buttons
+
                         const optionTag = document.createElement('label');
-                        optionTag.textContent(element);
+                        optionTag.textContent = element;
+                        optionTag.setAttribute('for', 'radio-btn');  // Link the label to the radio button via the 'for' attribute
+
+                        // Append the radio button and the label to the container
+                        container.appendChild(radioTag);
+                        container.appendChild(optionTag);
                     })
                 }
                 // console.log(); 
@@ -103,7 +121,6 @@
         console.log(dict);
 
     </script>
-    <script src="js/client-form.js"></script>
 </body>
 
 </html>

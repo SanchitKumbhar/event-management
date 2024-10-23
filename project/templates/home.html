@@ -76,16 +76,16 @@
     </div>
 
     <div class="contents">
-        {% for index1, index2 in zip_event_form %}
+        {% for index in event %}
         <div class="cards">
             <div class="content">
-                <h3 ><a href="form/{{index1.pk}}">{{index1.eventname}}</a></h3>
-                {{index1.eventorganizer}} <br>
-                {{index1.eventday}} <br>
-                {{index1.eventdate}} <br>
-                {{index1.eventtime}} <br>
-                {{index1.eventabout}} <br>
-                <a href="event/{{index2.data}}">Fill the form</a>
+                <h3 ><a href="form/{{index.pk}}">{{index.eventname}}</a></h3>
+                {{index.eventorganizer}} <br>
+                {{index.eventday}} <br>
+                {{index.eventdate}} <br>
+                {{index.eventtime}} <br>
+                {{index.eventabout}} <br>
+                
             </div>
 
         </div>{% endfor %} 
