@@ -122,3 +122,10 @@ def formapi(request,pk):
         # print(model_to_dict(get_instance))
         return JsonResponse(model_to_dict(get_instance))
 
+
+def Draft(request):
+    jsondata = json.loads(request.body)
+    print(jsondata)
+    return JsonResponse({
+        'success' : 200
+    })

@@ -8,417 +8,464 @@
     <link rel="stylesheet" href="form.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap">
     <style>
-        
-body {
-    font-family: 'Poppins', sans-serif;
-    background-color: #f4f4f4;
-    padding: 20px;
-}
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
 
-.form-container {
-    background: linear-gradient(45deg, #ad48f0, #fd2d73, #f16e2c, #fbc040,#f138a1);
-    padding: 30px;
-    font-family: 'Poppins', sans-serif;
-    border-radius: 5px;
-    box-shadow: 2px 2px 3px 2px #b8b8b8;
-    max-width: 650px;
-    margin: auto;
-}
+        .form-container {
+            background: linear-gradient(45deg, #ad48f0, #fd2d73, #f16e2c, #fbc040, #f138a1);
+            padding: 30px;
+            font-family: 'Poppins', sans-serif;
+            border-radius: 5px;
+            box-shadow: 2px 2px 3px 2px #b8b8b8;
+            max-width: 650px;
+            margin: auto;
+        }
 
-h1 {
-    text-align: center;
-    color: black;
-    font-family: 'Poppins', sans-serif;
-    font-size: 35px;
-    text-shadow: 2px 2px 3px black;
-}
+        h1 {
+            text-align: center;
+            color: black;
+            font-family: 'Poppins', sans-serif;
+            font-size: 35px;
+            text-shadow: 2px 2px 3px black;
+        }
 
-hr{
-    height: 3.5px;
-    border: rgb(24, 24, 24);
-    background-color: rgb(21, 21, 21);
-}
+        hr {
+            height: 3.5px;
+            border: rgb(24, 24, 24);
+            background-color: rgb(21, 21, 21);
+        }
 
-.form-item {
-    margin-bottom: 20px;
-}
+        .form-item {
+            margin-bottom: 20px;
+        }
 
-.question-label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-}
+        .question-label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
 
-input[type="text"],
-textarea,
-select {
-    width: 96%;
-    max-width: 96%;
-    min-height: 25px;
-    height: 25px;
-    font-size: 17px;
-    padding: 10px;
-    margin-top: 5px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-}
+        input[type="text"],
+        textarea,
+        select {
+            width: 96%;
+            max-width: 96%;
+            min-height: 25px;
+            height: 25px;
+            font-size: 17px;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
 
-input::placeholder,
-textarea::placeholder,
-select::placeholder{
-    color: grey;
-    font-family: 'Poppins', sans-serif;
-    
-} 
+        input::placeholder,
+        textarea::placeholder,
+        select::placeholder {
+            color: grey;
+            font-family: 'Poppins', sans-serif;
 
-.option-input {
-    margin-top: 10px;
-}
+        }
 
-.form-builder{
-    display: flex;
-    flex-direction: row;
-}
+        .option-input {
+            margin-top: 10px;
+        }
 
-button {
-    margin: 5px;
-    padding: 10px;
-    font-family: 'Poppins', sans-serif;
-    font-weight: bold;
-    font-size: 16px;
-    background-color: whitesmoke;
-    color: black;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
+        .form-builder {
+            display: flex;
+            flex-direction: row;
+        }
 
-.button-row {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px; 
-}
+        button {
+            margin: 5px;
+            padding: 10px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: bold;
+            font-size: 16px;
+            background-color: whitesmoke;
+            color: black;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
 
-.half-button{
-    width: 48%; 
-    padding: 10px; 
-    
-}
+        .button-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
 
-.mid-button{
-    width: 48%;
-    padding: 10px;
-    display: block;
-    margin: 0 auto;
-}
+        .half-button {
+            width: 48%;
+            padding: 10px;
 
-.dropdown-widget button{
-    width: 115px;
-}
+        }
 
-#submit-form{
-    display: none;
-    margin: 0 auto;
-}
+        .mid-button {
+            width: 48%;
+            padding: 10px;
+            display: block;
+            margin: 0 auto;
+        }
 
-button:hover {
-    background-color: #ce3ca2;
-    color: white;
-    transition: 0.4s;
-}
+        .dropdown-widget button {
+            width: 115px;
+        }
 
-#dynamic-form {
-    margin-top: 20px;
-}
+        #submit-form {
+            display: none;
+            margin: 0 auto;
+        }
 
-.dropdown-widget {
-    display: flex;
-    flex-direction: column;
-}
+        button:hover {
+            background-color: #ce3ca2;
+            color: white;
+            transition: 0.4s;
+        }
 
-.dropdown-widget select {
-    width: 100%;
-    min-width: 99%;
-    height: 46px;
-    margin-right: 10px;
-}
+        #dynamic-form {
+            margin-top: 20px;
+        }
 
-.dropdown-widget .option-input {
-    display: flex;
-    align-items: center;
-}
+        .dropdown-widget {
+            display: flex;
+            flex-direction: column;
+        }
 
+        .dropdown-widget select {
+            width: 100%;
+            min-width: 99%;
+            height: 46px;
+            margin-right: 10px;
+        }
 
+        .dropdown-widget .option-input {
+            display: flex;
+            align-items: center;
+        }
     </style>
-   </head>
+</head>
 
 <body>
     <div class="form-container">
-        <h1>CREATE YOUR FORM!!</h1><hr>
+        <h1>CREATE YOUR FORM!!</h1>
+        <hr>
         <div id="form-builder">
             <div class="button-row">
-            <button onclick="addQuestion('text')" class="half-button">Add Text Question</button>
-            <button onclick="addQuestion('textarea')" class="half-button">Add Text Area Question</button>
+                <button onclick="addQuestion('text')" class="half-button">Add Text Question</button>
+                <button onclick="addQuestion('textarea')" class="half-button">Add Text Area Question</button>
             </div>
             <div class="button-row">
-            <button onclick="addDropdownWidget()" class="half-button">Add Dropdown Widget Question</button>
-            <button onclick="addQuestion('radio')" class="half-button">Add Radio Button Question</button>
+                <button onclick="addDropdownWidget()" class="half-button">Add Dropdown Widget Question</button>
+                <button onclick="addQuestion('radio')" class="half-button">Add Radio Button Question</button>
             </div>
             <button onclick="addQuestion('checkbox')" class="mid-button">Add Check Box Question</button>
-        </div><hr>
+        </div>
+        <hr>
         <form id="dynamic-form">
             <!-- Dynamic form fields will be added here -->
         </form>
         <button id="submit-form" onclick="submitForm()">Submit Form</button>
     </div>
 
-<script>
-    /*
-    This code is written by ChatGPT
+    <script>
+        /*
+        This code is written by ChatGPT
+    
+        This code specifies a dynamic way to create a form with following input types:
+            1.text
+            2.textarea
+            3.select
+            4.checkbox
+            5.radio
+            
+    */
 
-    This code specifies a dynamic way to create a form with following input types:
-        1.text
-        2.textarea
-        3.select
-        4.checkbox
-        5.radio
-        
-*/
+        function addQuestion(type) {
+            const form = document.getElementById("dynamic-form");
 
-function addQuestion(type) {
-    const form = document.getElementById("dynamic-form");
+            const questionDiv = document.createElement("div");
+            questionDiv.className = "form-item";
 
-    const questionDiv = document.createElement("div");
-    questionDiv.className = "form-item";
+            const label = document.createElement("label");
+            label.className = "question-label";
+            label.textContent = "Question:";
+            questionDiv.appendChild(label);
 
-    const label = document.createElement("label");
-    label.className = "question-label";
-    label.textContent = "Question:";
-    questionDiv.appendChild(label);
+            const questionInput = document.createElement("input");
+            questionInput.type = "text";
+            questionInput.placeholder = "Enter your question";
+            questionDiv.appendChild(questionInput);
 
-    const questionInput = document.createElement("input");
-    questionInput.type = "text";
-    questionInput.placeholder = "Enter your question";
-    questionDiv.appendChild(questionInput);
+            const answerLabel = document.createElement("label");
+            answerLabel.className = "question-label";
+            answerLabel.textContent = "Answer:";
+            questionDiv.appendChild(answerLabel);
 
-    const answerLabel = document.createElement("label");
-    answerLabel.className = "question-label";
-    answerLabel.textContent = "Answer:";
-    questionDiv.appendChild(answerLabel);
-
-    if (type === 'text') {
-        const input = document.createElement("input");
-        input.type = "text";
-        input.name = "textInput";
-        input.placeholder = "Enter answer";
-        questionDiv.appendChild(input);
-    } else if (type === 'textarea') {
-        const textarea = document.createElement("textarea");
-        textarea.name = "textArea";
-        textarea.placeholder = "Enter details";
-        questionDiv.appendChild(textarea);
-    } else if (type === 'radio' || type === 'checkbox') {
-        addOptionInput(questionDiv, type);
-    }
-
-    form.appendChild(questionDiv);
-
-    document.getElementById("submit-form").style.display = "block";
-
-}
-
-
-function addDropdownWidget() {
-    const form = document.getElementById("dynamic-form");
-
-    const questionDiv = document.createElement("div");
-    questionDiv.className = "form-item";
-
-    const label = document.createElement("label");
-    label.className = "question-label";
-    label.textContent = "Question:";
-    questionDiv.appendChild(label);
-
-    const questionInput = document.createElement("input");
-    questionInput.type = "text";
-    questionInput.placeholder = "Enter your question";
-    questionDiv.appendChild(questionInput);
-
-    const answerLabel = document.createElement("label");
-    answerLabel.className = "question-label";
-    answerLabel.textContent = "Answer:";
-    questionDiv.appendChild(answerLabel);
-
-    const dropdownDiv = document.createElement("div");
-    dropdownDiv.className = "dropdown-widget";
-
-    const dropdown = document.createElement("select");
-    dropdown.name = "dropdownWidget";
-    dropdownDiv.appendChild(dropdown);
-
-    const optionInput = document.createElement("input");
-    optionInput.type = "text";
-    optionInput.placeholder = "Enter option value";
-    optionInput.className = "option-input";
-    dropdownDiv.appendChild(optionInput);
-
-    const addOptionButton = document.createElement("button");
-    addOptionButton.type = "button";
-    addOptionButton.textContent = "Add Option";
-    addOptionButton.onclick = function () {
-        const value = optionInput.value.trim();
-        if (value) {
-            const option = document.createElement("option");
-            option.value = value;
-            option.text = value;
-            dropdown.appendChild(option);
-            optionInput.value = "";
-        }
-    };
-
-    dropdownDiv.appendChild(addOptionButton);
-    questionDiv.appendChild(dropdownDiv);
-    form.appendChild(questionDiv);
-
-    // Shows the submit button
-    document.getElementById("submit-form").style.display = "block";
-
-}
-
-function addOptionInput(parentElement, type) {
-    const optionDiv = document.createElement("div");
-    optionDiv.className = "option-input";
-
-    const optionInput = document.createElement("input");
-    optionInput.type = "text";
-    optionInput.placeholder = "Enter option value";
-    optionDiv.appendChild(optionInput);
-
-    const addOptionButton = document.createElement("button");
-    addOptionButton.type = "button";
-    addOptionButton.textContent = "Add Option";
-    addOptionButton.onclick = function () {
-        const value = optionInput.value.trim();
-        if (value) {
-            if (type === 'radio' || type === 'checkbox') {
-                const label = document.createElement("label");
+            if (type === 'text') {
                 const input = document.createElement("input");
-                input.type = type;
-                input.name = type + "Option";
-                input.value = value;
-                label.appendChild(input);
-                label.appendChild(document.createTextNode(" " + value));
-                parentElement.appendChild(label);
-                parentElement.appendChild(document.createElement("br"));
+                input.type = "text";
+                input.name = "textInput";
+                input.placeholder = "Enter answer";
+                questionDiv.appendChild(input);
+            } else if (type === 'textarea') {
+                const textarea = document.createElement("textarea");
+                textarea.name = "textArea";
+                textarea.placeholder = "Enter details";
+                questionDiv.appendChild(textarea);
+            } else if (type === 'radio' || type === 'checkbox') {
+                addOptionInput(questionDiv, type);
             }
-            optionInput.value = "";
-        }
-    };
 
-    optionDiv.appendChild(addOptionButton);
-    parentElement.appendChild(optionDiv);
-}
-function submitForm() {
-    const form = document.getElementById("dynamic-form");
-    const jsonData = [];
+            form.appendChild(questionDiv);
 
-    const formItems = form.querySelectorAll(".form-item"); // All form items (questions)
+            document.getElementById("submit-form").style.display = "block";
 
-    formItems.forEach(item => {
-        const questionTextElement = item.querySelector("input[type='text'][placeholder='Enter your question']");
-        const questionText = questionTextElement ? questionTextElement.value : ''; // Get question text
-
-        // Determine the question type
-        let questionType = '';
-        if (item.querySelector("select")) {
-            questionType = 'select';
-        } else if (item.querySelector("textarea")) {
-            questionType = 'textarea';
-        } else if (item.querySelector("input[type='radio']")) {
-            questionType = 'radio';
-        } else if (item.querySelector("input[type='checkbox']")) {
-            questionType = 'checkbox';
-        } else {
-            questionType = 'text';
         }
 
-        const questionData = {
-            question: questionText,
-            type: questionType,
-            options: [],
-            answers: []
-        };
 
-        // Handle 'select' type
-        if (questionType === 'select') {
-            const selectOptions = item.querySelectorAll("select option");
-            selectOptions.forEach(option => {
-                if (option.value) {
-                    questionData.options.push(option.value);
+        function addDropdownWidget() {
+            const form = document.getElementById("dynamic-form");
+
+            const questionDiv = document.createElement("div");
+            questionDiv.className = "form-item";
+
+            const label = document.createElement("label");
+            label.className = "question-label";
+            label.textContent = "Question:";
+            questionDiv.appendChild(label);
+
+            const questionInput = document.createElement("input");
+            questionInput.type = "text";
+            questionInput.placeholder = "Enter your question";
+            questionDiv.appendChild(questionInput);
+
+            const answerLabel = document.createElement("label");
+            answerLabel.className = "question-label";
+            answerLabel.textContent = "Answer:";
+            questionDiv.appendChild(answerLabel);
+
+            const dropdownDiv = document.createElement("div");
+            dropdownDiv.className = "dropdown-widget";
+
+            const dropdown = document.createElement("select");
+            dropdown.name = "dropdownWidget";
+            dropdownDiv.appendChild(dropdown);
+
+            const optionInput = document.createElement("input");
+            optionInput.type = "text";
+            optionInput.placeholder = "Enter option value";
+            optionInput.className = "option-input";
+            dropdownDiv.appendChild(optionInput);
+
+            const addOptionButton = document.createElement("button");
+            addOptionButton.type = "button";
+            addOptionButton.textContent = "Add Option";
+            addOptionButton.onclick = function () {
+                const value = optionInput.value.trim();
+                if (value) {
+                    const option = document.createElement("option");
+                    option.value = value;
+                    option.text = value;
+                    dropdown.appendChild(option);
+                    optionInput.value = "";
                 }
-            });
+            };
+
+            dropdownDiv.appendChild(addOptionButton);
+            questionDiv.appendChild(dropdownDiv);
+            form.appendChild(questionDiv);
+
+            // Shows the submit button
+            document.getElementById("submit-form").style.display = "block";
+
         }
 
-        // Handle 'radio' and 'checkbox' types
-        if (questionType === 'radio' || questionType === 'checkbox') {
-            const inputOptions = item.querySelectorAll(`input[type='${questionType}']`);
-            inputOptions.forEach(input => {
-                questionData.options.push(input.value); // Get the value directly from input
-            });
-        }
+        function addOptionInput(parentElement, type) {
+            const optionDiv = document.createElement("div");
+            optionDiv.className = "option-input";
 
-        // Handle 'text' type or any other question type
-        if (questionType === 'text' || questionType === 'textarea') {
-            const answerInputs = item.querySelectorAll(`input[type='text']:not([placeholder='Enter your question']), textarea`);
-            answerInputs.forEach(input => {
-                if (input.value) {
-                    questionData.answers.push(input.value);
+            const optionInput = document.createElement("input");
+            optionInput.type = "text";
+            optionInput.placeholder = "Enter option value";
+            optionDiv.appendChild(optionInput);
+
+            const addOptionButton = document.createElement("button");
+            addOptionButton.type = "button";
+            addOptionButton.textContent = "Add Option";
+            addOptionButton.onclick = function () {
+                const value = optionInput.value.trim();
+                if (value) {
+                    if (type === 'radio' || type === 'checkbox') {
+                        const label = document.createElement("label");
+                        const input = document.createElement("input");
+                        input.type = type;
+                        input.name = type + "Option";
+                        input.value = value;
+                        label.appendChild(input);
+                        label.appendChild(document.createTextNode(" " + value));
+                        parentElement.appendChild(label);
+                        parentElement.appendChild(document.createElement("br"));
+                    }
+                    optionInput.value = "";
                 }
-            });
+            };
+
+            optionDiv.appendChild(addOptionButton);
+            parentElement.appendChild(optionDiv);
         }
 
-        jsonData.push(questionData);
-    });
+        function processData(params) {
+            const form = document.getElementById("dynamic-form");
+            const jsonData = [];
 
-    // Send JSON data to the backend
-    fetch('/submit-form/{{file}}/{{pk}}', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-CSRFToken': getCookie('csrftoken')  // CSRF protection
-        },
-        body: JSON.stringify(jsonData)
-    })
-        .then(response => response.json())
-        .then(data => {
-            console.log('Success:', data);
-        })
-        .catch((error) => {
-            console.error('Error:', error);
+            const formItems = form.querySelectorAll(".form-item"); // All form items (questions)
+
+            formItems.forEach(item => {
+                const questionTextElement = item.querySelector("input[type='text'][placeholder='Enter your question']");
+                const questionText = questionTextElement ? questionTextElement.value : ''; // Get question text
+
+                // Determine the question type
+                let questionType = '';
+                if (item.querySelector("select")) {
+                    questionType = 'select';
+                } else if (item.querySelector("textarea")) {
+                    questionType = 'textarea';
+                } else if (item.querySelector("input[type='radio']")) {
+                    questionType = 'radio';
+                } else if (item.querySelector("input[type='checkbox']")) {
+                    questionType = 'checkbox';
+                } else {
+                    questionType = 'text';
+                }
+
+                const questionData = {
+                    question: questionText,
+                    type: questionType,
+                    options: [],
+                    answers: []
+                };
+
+                // Handle 'select' type
+                if (questionType === 'select') {
+                    const selectOptions = item.querySelectorAll("select option");
+                    selectOptions.forEach(option => {
+                        if (option.value) {
+                            questionData.options.push(option.value);
+                        }
+                    });
+                }
+
+                // Handle 'radio' and 'checkbox' types
+                if (questionType === 'radio' || questionType === 'checkbox') {
+                    const inputOptions = item.querySelectorAll(`input[type='${questionType}']`);
+                    inputOptions.forEach(input => {
+                        questionData.options.push(input.value); // Get the value directly from input
+                    });
+                }
+
+                // Handle 'text' type or any other question type
+                if (questionType === 'text' || questionType === 'textarea') {
+                    const answerInputs = item.querySelectorAll(`input[type='text']:not([placeholder='Enter your question']), textarea`);
+                    answerInputs.forEach(input => {
+                        if (input.value) {
+                            questionData.answers.push(input.value);
+                        }
+                    });
+                }
+
+                jsonData.push(questionData);
+
+            });
+
+            // Send JSON data to the backend
+            return jsonData
+
+        }
+
+        function submitForm() {
+
+            jsonData = processData()
+
+            fetch('/submit-form/{{file}}/{{pk}}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': getCookie('csrftoken')  // CSRF protection
+                },
+                body: JSON.stringify(jsonData)
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Success:', data);
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+        }
+
+
+
+        window.addEventListener("beforeunload", function (event) {
+            // Customize the message that appears (this might not work in all browsers)
+            jsonData = processData()
+
+            fetch('/api/draft/', {
+                method: 'post',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': getCookie('csrftoken')
+                },
+                body: JSON.stringify({
+                    data: jsonData
+                })
+
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data.message);  // Log success or failure
+                })
+                .catch(error => {
+                    console.error('Error saving draft:', error);
+                });
+            event.preventDefault();
+            // console.log((hello));
+            // event.returnValue = ''; // This triggers a confirmation dialog in some browsers
+
+            // Any other actions before the user leaves the page
+            console.log("User is leaving the page (closing, refreshing, or navigating away).");
         });
-}
-
-// Helper function to get CSRF token
-function getCookie(name) {
-    let cookieValue = null;
-    if (document.cookie && document.cookie !== '') {
-        const cookies = document.cookie.split(';');
-        for (let i = 0; i < cookies.length; i++) {
-            const cookie = cookies[i].trim();
-            if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                break;
+        // Helper function to get CSRF token
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
             }
+            return cookieValue;
         }
-    }
-    return cookieValue;
-}
 
-</script>
+        window.addEventListener("beforeunload", function (event) {
+            // Customize the message that appears (this might not work in all browsers)
+            event.preventDefault();
+            event.returnValue = ''; // This triggers a confirmation dialog in some browsers
+
+            // Any other actions before the user leaves the page
+            console.log("User is leaving the page (closing, refreshing, or navigating away).");
+        });
+
+
+    </script>
 </body>
 
 </html>
-
-
-
