@@ -6,7 +6,7 @@ from django.contrib.auth import login, authenticate, logout
 from django.views.decorators.csrf import csrf_exempt
 import json
 import pandas as pd
-
+from django.forms.models import model_to_dict
 # Create your views here.
 
 
@@ -114,18 +114,42 @@ def event_info(request):
 def form_render(request,pk):
             return render(request,"client-form.html",{'id':pk})
 
-from django.forms.models import model_to_dict
 
 def formapi(request,pk):
     if request.method=='GET':
-        get_instance=FormData.objects.get(event=pk)
+        print(pk)
+        eventinstance=EventInformation.objects.get(pk=pk)
+        draftinstance=DraftModel.objects.filter(event=eventinstance).exists()
+        if draftinstance is False:
+            get_instance=FormData.objects.get(event=pk)
+            print(get_instance.data)
+            return JsonResponse(model_to_dict(get_instance))
+
+        else:
+            get_instance_draft=DraftModel.objects.get(event=eventinstance)
+            return JsonResponse(model_to_dict(get_instance_draft))
+
+
         # print(model_to_dict(get_instance))
-        return JsonResponse(model_to_dict(get_instance))
+
+
 
 
 def Draft(request):
     jsondata = json.loads(request.body)
-    print(jsondata)
+    eventinstance=EventInformation.objects.get(pk=jsondata.get('pk'))
+    
+    draftinstance=DraftModel.objects.filter(event=eventinstance).exists()
+
+    if draftinstance is False:
+        print("true")
+        DraftModel.objects.create(user=request.user,event=eventinstance,data=jsondata.get('data'))
+    else:
+        draftinstance=DraftModel.objects.filter(event=eventinstance)
+        draftinstance.delete()
+        print(jsondata)
+        DraftModel.objects.create(user=request.user,event=eventinstance,data=jsondata.get('data'))
+
     return JsonResponse({
         'success' : 200
     })

@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractUser,User
 from .manager import CustomManager
 # Create your models here.
 
@@ -39,3 +39,8 @@ class FormData(models.Model):
 
     def __str__(self):
         return str(self.data)
+
+class DraftModel(models.Model):
+    data=models.JSONField()
+    user=models.ForeignKey(CustomUser, on_delete=models.CASCADE,null=True,name="user")
+    event=models.ForeignKey(EventInformation, name="event", on_delete=models.CASCADE,null=True)

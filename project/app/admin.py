@@ -4,3 +4,4 @@ from .models import *
 admin.site.register(CustomUser)
 admin.site.register(EventInformation)
 admin.site.register(FormData)
+admin.site.register(DraftModel)

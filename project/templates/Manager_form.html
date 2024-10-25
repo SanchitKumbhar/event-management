@@ -421,7 +421,8 @@
                     'X-CSRFToken': getCookie('csrftoken')
                 },
                 body: JSON.stringify({
-                    data: jsonData
+                    data: jsonData,
+                    pk:'{{pk}}'
                 })
 
             })
