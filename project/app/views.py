@@ -83,6 +83,7 @@ def submit_form(request, file, pk):
 
 
 def create_form(request, file, pk):
+
     return render(request, "manager_form.html", {'file': file, 'pk': pk})
     # return JsonResponse({"status": "error", "message": "Invalid request method"}, status=405)
 
@@ -117,24 +118,16 @@ def form_render(request,pk):
 
 def formapi(request,pk):
     if request.method=='GET':
-        print(pk)
         eventinstance=EventInformation.objects.get(pk=pk)
-        draftinstance=DraftModel.objects.filter(event=eventinstance).exists()
-        if draftinstance is False:
-            get_instance=FormData.objects.get(event=pk)
-            print(get_instance.data)
-            return JsonResponse(model_to_dict(get_instance))
+        get_instance=FormData.objects.get(event=pk)
+        print(get_instance.data[0])
+        return JsonResponse(model_to_dict(get_instance))
 
-        else:
-            get_instance_draft=DraftModel.objects.get(event=eventinstance)
-            return JsonResponse(model_to_dict(get_instance_draft))
-
-
-        # print(model_to_dict(get_instance))
+       # print(model_to_dict(get_instance))
 
 
 
-
+# this feature editing is stopped for a while
 def Draft(request):
     jsondata = json.loads(request.body)
     eventinstance=EventInformation.objects.get(pk=jsondata.get('pk'))
@@ -142,14 +135,27 @@ def Draft(request):
     draftinstance=DraftModel.objects.filter(event=eventinstance).exists()
 
     if draftinstance is False:
-        print("true")
         DraftModel.objects.create(user=request.user,event=eventinstance,data=jsondata.get('data'))
     else:
         draftinstance=DraftModel.objects.filter(event=eventinstance)
-        draftinstance.delete()
-        print(jsondata)
-        DraftModel.objects.create(user=request.user,event=eventinstance,data=jsondata.get('data'))
-
+        DraftModel.data=jsondata.get('data')
+        DraftModel.event=draftinstance
+        DraftModel.user=request.user
+        
     return JsonResponse({
         'success' : 200
     })
+
+import openai
+# large dataIntegration code:
+def dataItegration(request):
+    if request.method == 'post':
+        jsonMsg=json.loads(request.body)
+
+        
+
+# def GetDraft(request,pk):
+#     if request.method == 'GET':
+#         eventinstance=EventInformation.objects.get(pk=pk)
+#         draftinstance=DraftModel.objects.get(event=eventinstance) 
+#         return JsonResponse({draftinstance.data[0]})
