@@ -43,7 +43,7 @@ def home(request):
         allformdata=FormData.objects.all()
         print(allevents)
         return render(request, "home.html",{'event':allevents})
-        
+
     else:
         return redirect("/auth")
 
@@ -72,7 +72,7 @@ def submit_form(request, file, pk):
 
         form_data = FormData(data=data, customuser=request.user, event=event_instance)
         form_data.save()
-        
+
         PreprocessData(data, file)
 
         # Send a response back to the client
@@ -97,7 +97,7 @@ def event_info(request):
         eventtime = request.POST.get("eventTime")
         eventabout = request.POST.get("eventAbout")
         file = request.FILES['file']
-    
+
         fileobj = FileSystemStorage()
         filepathname = fileobj.save(file.name, file)
         filepathname = fileobj.url(filepathname)
@@ -131,7 +131,7 @@ def formapi(request,pk):
 def Draft(request):
     jsondata = json.loads(request.body)
     eventinstance=EventInformation.objects.get(pk=jsondata.get('pk'))
-    
+
     draftinstance=DraftModel.objects.filter(event=eventinstance).exists()
 
     if draftinstance is False:
@@ -141,7 +141,7 @@ def Draft(request):
         DraftModel.data=jsondata.get('data')
         DraftModel.event=draftinstance
         DraftModel.user=request.user
-        
+
     return JsonResponse({
         'success' : 200
     })
@@ -149,13 +149,18 @@ def Draft(request):
 import openai
 # large dataIntegration code:
 def dataItegration(request):
-    if request.method == 'post':
+    if request.method == 'POST':
         jsonMsg=json.loads(request.body)
+        print(jsonMsg.get("msg"))
 
-        
+    return JsonResponse({
+        'succ' : 'ok'
+        })
+
+
 
 # def GetDraft(request,pk):
 #     if request.method == 'GET':
 #         eventinstance=EventInformation.objects.get(pk=pk)
-#         draftinstance=DraftModel.objects.get(event=eventinstance) 
+#         draftinstance=DraftModel.objects.get(event=eventinstance)
 #         return JsonResponse({draftinstance.data[0]})

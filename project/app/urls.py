@@ -9,12 +9,12 @@ urlpatterns = [
     path("form/<int:pk>",views.form_render,name="form_render"),
     path("api/form/<int:pk>",views.formapi,name="api/form"),
     path("submit-form/<str:file>/<int:pk>",views.submit_form,name="submit-form"),
-    # path("api/user/data-integration/end-point/'",views.dataIntegartion,name="api/user/data-integration/end-point/'"),
+    path("api/user/data-integration/end-point/",views.dataItegration,name="api/user/data-integration/end-point/'"),
     # '''
     # editing is paused:
     # path('api/draft/',views.Draft,name='api/draft'),
     # path('api/get/draft/<int:pk>',views.GetDraft,name='api/get/draft')
     # '''
-    
+
 
 ]

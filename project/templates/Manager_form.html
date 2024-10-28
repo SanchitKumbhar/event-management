@@ -169,6 +169,7 @@
         <form id="dynamic-form">
             <!-- Dynamic form fields will be added here -->
         </form>
+
         <button id="submit-form" onclick="submitForm()">Submit Form</button>
     </div>
 
@@ -269,10 +270,33 @@
 
             const dataIntegrationbtn=document.createElement("button")
             dataIntegrationbtn.textContent="Integarte with message"
-            // dataIntegrationbtn.onclick=()=>{
-            //   let msg = prompt("Enter your message=")
-            // }
-            questionDiv.append(dataIntegrationbtn)
+            dataIntegrationbtn.onclick=(event)=>{
+              // event.preventDefault();
+              const msg = prompt("Enter your message=");
+              // console.log(msg);
+
+              fetch("/api/user/data-integration/end-point/",{
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': getCookie('csrftoken')  // CSRF protection
+                },
+                body: JSON.stringify({
+                  'msg' :msg
+                })
+              })
+              .then(response=>{
+                return response.json()
+              })
+              .then(data=>{
+                console.log(data);
+              })
+              .catch(error=>{
+                console.log(error);
+              });
+            };
+
+
 
             addOptionButton.type = "button";
             addOptionButton.textContent = "Add Option";
@@ -288,6 +312,7 @@
             };
 
             dropdownDiv.appendChild(addOptionButton);
+            document.getElementById("form-builder").appendChild(dataIntegrationbtn)
             questionDiv.appendChild(dropdownDiv);
             form.appendChild(questionDiv);
 
